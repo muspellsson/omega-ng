@@ -1049,7 +1049,7 @@ void l_charity(void)
     print3("'Pinchpurse!'");
   else {
     clearmsg();
-    //    print1("How much can you give? ");
+    /*    print1("How much can you give? "); */
     donation = parsenum("How much can you give?");
     if (donation < 1)
       print2("'Go stick your head in a pig.'");
