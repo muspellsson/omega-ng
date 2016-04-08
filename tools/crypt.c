@@ -135,7 +135,11 @@ int main(int num_args, char *args[])
   /* A file to hold the data portion of the conglomeration; it will be
    * appended to the output file when we're finished.  This allows us to
    * build the header portion of the file easily. */
+#ifndef __WIN32
   data = tmpfile();
+#else
+  data = fopen("crypt.tmp", "wb+"); /* Just pray this file does not exist */
+#endif
   if ( data == NULL )
     error("Unable to open temporary file.\n");
   /* The final output. */
@@ -236,6 +240,9 @@ int main(int num_args, char *args[])
   fclose(in);
   fclose(out);
   fclose(data);
+#ifndef __WIN32
+  remove("crypt.tmp");
+#endif
   exit(EXIT_SUCCESS);
 }
 

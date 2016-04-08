@@ -1676,7 +1676,7 @@ enum map_identifier {
     MAP_temple=16,
     MAP_thaumari=17,
     MAP_whorfen=18,
-    MAP_woodmere=19,
+    MAP_woodmere=19
 };
 
 /* typedefs needed by structs */
