@@ -5,7 +5,9 @@
    called from command1.c */
 
 #ifndef MSDOS_SUPPORTED_ANTIQUE
-/* #include <pwd.h> */
+#ifndef __WIN32
+#include <pwd.h>
+#endif
 #include <unistd.h>
 #endif
 
@@ -505,7 +507,7 @@ void charid(void)
 void wizard(void)
 {
   char *lname;
-#ifndef MSDOS_SUPPORTED_ANTIQUE
+#if !(defined(MSDOS_SUPPORTED_ANTIQUE) || defined(__WIN32))
   struct passwd *dastuff;
 #endif
 
@@ -515,7 +517,7 @@ void wizard(void)
     clearmsg();
     if (cinema_confirm("You just asked to enter wizard mode.")=='y') {
        lname = getlogin();
-#ifndef MSDOS_SUPPORTED_ANTIQUE
+#if !(defined(MSDOS_SUPPORTED_ANTIQUE) || defined(__WIN32))
        if (!lname || strlen(lname) == 0)
        {
 	    dastuff = getpwuid(getuid());

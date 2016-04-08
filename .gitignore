@@ -4,3 +4,5 @@ clrgen.*
 warnings
 *.exe
 omega
+lib/maps.dat
+tools/libsrc/maps.dat

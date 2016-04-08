@@ -240,7 +240,7 @@ int main(int num_args, char *args[])
   fclose(in);
   fclose(out);
   fclose(data);
-#ifndef __WIN32
+#ifdef __WIN32
   remove("crypt.tmp");
 #endif
   exit(EXIT_SUCCESS);

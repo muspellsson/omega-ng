@@ -6,9 +6,11 @@
 #ifndef MSDOS_SUPPORTED_ANTIQUE
 #include <sys/types.h>
 #include <sys/time.h>
-/* #include <sys/wait.h> */
 #include <unistd.h>
+#ifndef __WIN32
+#include <sys/wait.h>
 int setreuid(uid_t ruid, uid_t euid);
+#endif
 #include <stdlib.h>
 #endif
 
