@@ -1,0 +1,6 @@
+date.c
+clrgen.*
+*.o
+warnings
+*.exe
+omega

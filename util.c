@@ -639,7 +639,7 @@ static int findspace_method_two (int * x_out, int * y_out, struct level * lev, i
         {
           if (y_dir)
             {
-              // case 0: X in outer loop, decrement X, decrement Y
+              /* case 0: X in outer loop, decrement X, decrement Y */
               do
                 {
                   do
@@ -661,7 +661,7 @@ static int findspace_method_two (int * x_out, int * y_out, struct level * lev, i
             }
           else
             {
-              // case 1: X in outer loop, decrement X, increment Y
+              /* case 1: X in outer loop, decrement X, increment Y */
               do
                 {
                   do
@@ -686,7 +686,7 @@ static int findspace_method_two (int * x_out, int * y_out, struct level * lev, i
         {
           if (y_dir)
             {
-              // case 2: X in outer loop, increment X, decrement Y
+              /* case 2: X in outer loop, increment X, decrement Y */
               do
                 {
                   do
@@ -708,7 +708,7 @@ static int findspace_method_two (int * x_out, int * y_out, struct level * lev, i
             }
           else
             {
-              // case 3: X in outer loop, increment X, increment Y
+              /* case 3: X in outer loop, increment X, increment Y */
               do
                 {
                   do
@@ -736,7 +736,7 @@ static int findspace_method_two (int * x_out, int * y_out, struct level * lev, i
         {
           if (x_dir)
             {
-              // case 4: Y in outer loop, decrement X, decrement Y
+              /* case 4: Y in outer loop, decrement X, decrement Y */
               do
                 {
                   do
@@ -758,7 +758,7 @@ static int findspace_method_two (int * x_out, int * y_out, struct level * lev, i
             }
           else
             {
-              // case 5: Y in outer loop, decrement X, increment Y
+              /* case 5: Y in outer loop, decrement X, increment Y */
               do
                 {
                   do
@@ -783,7 +783,7 @@ static int findspace_method_two (int * x_out, int * y_out, struct level * lev, i
         {
           if (x_dir)
             {
-              // case 6: Y in outer loop, increment X, decrement Y
+              /* case 6: Y in outer loop, increment X, decrement Y */
               do
                 {
                   do
@@ -805,7 +805,7 @@ static int findspace_method_two (int * x_out, int * y_out, struct level * lev, i
             }
           else
             {
-              // case 7: Y in outer loop, increment X, increment Y
+              /* case 7: Y in outer loop, increment X, increment Y */
               do
                 {
                   do
