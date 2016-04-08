@@ -12,18 +12,39 @@ SOURCES = omega.c abyss.c aux1.c aux2.c aux3.c bank.c char.c city.c clrgen.c\
       newrand.c priest.c pdump.c save.c scr.c site1.c site2.c spell.c\
       stats.c time.c trap.c util.c village.c
 
-all:
+OBJ = omega.o abyss.o aux1.o aux2.o aux3.o bank.o char.o city.o clrgen.o\
+      command1.o command2.o command3.o country.o date.o effect1.o\
+      effect2.o effect3.o etc.o env.o file.o gen1.o gen2.o guild1.o guild2.o\
+      house.o init.o inv.o item.o itemf1.o itemf2.o itemf3.o lev.o map.o\
+      mmelee.o mmove.o mon.o move.o movef.o mspec.o mstrike.o mtalk.o\
+      newrand.o priest.o pdump.o save.o scr.o site1.o site2.o spell.o\
+      stats.o time.o trap.o util.o village.o
+
+all: maps genclr clrgen.o date $(OBJ)
+	$(CC) $(CFLAGS) $(OBJ) $(LDFLAGS) -o omega
+
+maps:
 	$(CC) tools/crypt.c    -o tools/crypt
 	$(CC) tools/decrypt.c  -o tools/decrypt
 	$(CC) tools/makedate.c -o tools/makedate
 	tools/crypt tools/libsrc/maps.dat tools/libsrc/*.map
 	cp tools/libsrc/maps.dat lib/maps.dat
-	$(CC) $(CFLAGS) genclr.c -o genclr
-	$(CPP) $(CFLAGS) -DOMEGA_CLRGEN *.[ch] | ./genclr clrgen.c clrgen.h
+
+date:
 	tools/makedate > date.c
-	$(CC) $(CFLAGS) $(SOURCES) $(LDFLAGS) -o omega
+
+genclr: genclr.o
+	$(CC) $(LDFLAGS) genclr.o -o genclr
+	$(CPP) $(CFLAGS) -DOMEGA_CLRGEN *.[ch] | ./genclr clrgen.c clrgen.h
+
+clrgen.o: clrgen.c
+
+date.o: date.c
 
 clean:
+	rm -f tools/libsrc/maps.dat
+	rm -f libs/maps.dat
+	rm -f *.o
 	rm -f clrgen.c clrgen.h
 	rm -f tools/crypt tools/decrypt tools/makedate
 	rm -f genclr
