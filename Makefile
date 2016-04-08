@@ -1,7 +1,7 @@
 CURSES_INC=/home/Ivan/PDCurses-3.4
 CC=gcc
 CPP=$(CC) -E
-CFLAGS=-DMSDOS -std=c11 -ansi -pedantic -Wall -O2 -I$(CURSES_INC)
+CFLAGS=-std=c11 -ansi -pedantic -Wall -O2 -I$(CURSES_INC)
 LDFLAGS=-L. -lpdcurses
 
 SOURCES = omega.c abyss.c aux1.c aux2.c aux3.c bank.c char.c city.c clrgen.c\

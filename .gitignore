@@ -6,3 +6,4 @@ warnings
 omega
 lib/maps.dat
 tools/libsrc/maps.dat
+*.a

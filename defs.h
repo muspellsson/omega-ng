@@ -93,7 +93,7 @@ on save and restore. */
 
 /* set WIZARD to maintainers's username */
 
-#define WIZARD "sheldon"
+#define WIZARD "ivan"
 
 /* If CATCH_SIGNALS is set to 1, will not dump core, nicer for players. */
 /* dbx still intercepts the signals first, so it's ok for debugging */
@@ -104,9 +104,13 @@ on save and restore. */
 /*---------------------------SYSTEM DEFINITIONS---------------------------*/
 
 /* Don't change anything from here on (unless you know what you're doing) */
-#define VERSION 9002
-#define VERSIONSTRING "omega version 0.90"
+#define VERSION 9003
+#define VERSIONSTRING "omega version 0.91"
 
+#ifdef __WIN32
+   #define MSDOS
+#endif
+   
 #ifndef AMIGA
 #ifndef MSDOS
 #ifndef BSD

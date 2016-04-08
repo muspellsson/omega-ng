@@ -9,11 +9,13 @@
                               *    **    **    *
                                *****      *****
 
-            omega version 0.90-pa8 is copyright (C) 1987,1988,1989 by:
+            omega version 0.91 is copyright (C) 1987,1988,1989 by:
                              Laurence R. Brothers
+                                  copyright (C) 2016 by:
+                             Ivan Sukin
                        and is licensed under the LGPL.
-             Maintained by: William Tanksley (wtanksley@bigfoot.com).
+             Maintained by: Ivan Sukin (muspellsson@undeadbsd.org).
              Send suggestions and complaints about this prealpha to
-                         William Tanksley, or visit
-                     http://dolphin.openprojects.net/Omega/.
+                         Ivan Sukin, or visit
+                     https://github.com/muspellsson/omega-ng.
 
