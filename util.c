@@ -6,7 +6,7 @@
 #ifndef MSDOS_SUPPORTED_ANTIQUE
 #include <sys/types.h>
 #include <sys/time.h>
-#include <sys/wait.h>
+/* #include <sys/wait.h> */
 #include <unistd.h>
 int setreuid(uid_t ruid, uid_t euid);
 #include <stdlib.h>

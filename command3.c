@@ -5,7 +5,7 @@
    called from command1.c */
 
 #ifndef MSDOS_SUPPORTED_ANTIQUE
-#include <pwd.h>
+/* #include <pwd.h> */
 #include <unistd.h>
 #endif
 

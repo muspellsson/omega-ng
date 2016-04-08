@@ -5,7 +5,7 @@
 #ifndef MSDOS_SUPPORTED_ANTIQUE
 #include <sys/types.h>
 #include <unistd.h>
-#include <pwd.h>
+/* #include <pwd.h> */
 #endif
 
 #include "glob.h"
