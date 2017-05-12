@@ -22,6 +22,7 @@
 /* most globals originate in omega.c */
 
 char *Omegalib;		/* contains the path to the library files */
+char *Omegastate;	/* contains the path to the volatile files */
 
 #ifdef DEBUG
 FILE *DG_debug_log; /* debug log file pointer */
@@ -357,6 +358,8 @@ int main(int argc, char *argv[])
   if (!(Omegalib = getenv("OMEGALIB")))
 #endif
     Omegalib = OMEGALIB;
+
+  Omegastate = OMEGASTATE;
 
   /* if filecheck is 0, some necessary data files are missing */
   if (filecheck() == 0) exit(0);
