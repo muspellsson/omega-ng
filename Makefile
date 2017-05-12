@@ -1,8 +1,10 @@
-CURSES_INC=/home/Ivan/PDCurses-3.4
+CURSES_INC=$(shell pkg-config --variable=includedir ncurses)
+CURSES_LIBS=$(shell pkg-config --libs ncurses)
 CC=gcc
 CPP=$(CC) -E
-CFLAGS=-std=c11 -ansi -pedantic -Wall -O2 -I$(CURSES_INC)
-LDFLAGS=-L. -lpdcurses
+CFLAGS=-std=c11 -pedantic -Wall -O2 -I$(CURSES_INC) -DBSD -Werror=all -Wno-error=unused-but-set-variable
+
+LDFLAGS=-L. $(CURSES_LIBS)
 
 SOURCES = omega.c abyss.c aux1.c aux2.c aux3.c bank.c char.c city.c clrgen.c\
       command1.c command2.c command3.c country.c date.c effect1.c\
@@ -30,16 +32,22 @@ maps:
 	tools/crypt tools/libsrc/maps.dat tools/libsrc/*.map
 	cp tools/libsrc/maps.dat lib/maps.dat
 
-date:
+date: tools/makedate
 	tools/makedate > date.c
 
 genclr: genclr.o
 	$(CC) $(LDFLAGS) genclr.o -o genclr
 	$(CPP) $(CFLAGS) -DOMEGA_CLRGEN *.[ch] | ./genclr clrgen.c clrgen.h
 
+tools/makedate: tools/makedate.c
+
+clrgen.c clrgen.h: genclr
+
 clrgen.o: clrgen.c
 
 date.o: date.c
+
+$(SOURCES): clrgen.h
 
 clean:
 	rm -f tools/libsrc/maps.dat
