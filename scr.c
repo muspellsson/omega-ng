@@ -4,6 +4,8 @@
 /* plus a few file i/o stuff */
 /* also some in file.c */
 
+#include "glob.h"
+
 #ifdef MSDOS_SUPPORTED_ANTIQUE
 # include "curses.h"
 #else
@@ -23,7 +25,6 @@
 # define CHARATTR(c)	((c) & ~0xff)
 #endif
 
-#include "glob.h"
 #include <ctype.h>
 #include <unistd.h>
 

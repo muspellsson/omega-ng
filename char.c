@@ -2,13 +2,15 @@
 /* char.c */
 /* Player generation */
 
+#include "glob.h"
+
 #ifndef MSDOS_SUPPORTED_ANTIQUE
 #include <sys/types.h>
 #include <unistd.h>
-/* #include <pwd.h> */
+#ifndef __WIN32
+#include <pwd.h>
 #endif
-
-#include "glob.h"
+#endif
 
 /* set player to begin with */
 int initplayer(void)
