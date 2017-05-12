@@ -2,9 +2,13 @@ CURSES_INC=$(shell pkg-config --variable=includedir ncurses)
 CURSES_LIBS=$(shell pkg-config --libs ncurses)
 CC=gcc
 CPP=$(CC) -E
-CFLAGS=-std=c11 -pedantic -Wall -O2 -I$(CURSES_INC) -DBSD -Werror=all -Wno-error=unused-but-set-variable
+OMEGA_CFLAGS=-std=c11 -pedantic -Wall
+OMEGA_CPPFLAGS=-std=c11 -I$(CURSES_INC) -DBSD
+OMEGA_LDFLAGS=-L. $(CURSES_LIBS)
+CFLAGS+=$(OMEGA_CFLAGS)
+CPPFLAGS+=$(OMEGA_CPPFLAGS)
+LDFLAGS+=$(OMEGA_LDFLAGS)
 
-LDFLAGS=-L. $(CURSES_LIBS)
 
 SOURCES = omega.c abyss.c aux1.c aux2.c aux3.c bank.c char.c city.c clrgen.c\
       command1.c command2.c command3.c country.c date.c effect1.c\
@@ -23,7 +27,7 @@ OBJ = omega.o abyss.o aux1.o aux2.o aux3.o bank.o char.o city.o clrgen.o\
       stats.o time.o trap.o util.o village.o
 
 all: maps genclr clrgen.o date $(OBJ)
-	$(CC) $(CFLAGS) $(OBJ) $(LDFLAGS) -o omega
+	$(CC) $(CPPFLAGS) $(CFLAGS) $(OBJ) $(LDFLAGS) $(LIBS) -o omega
 
 maps:
 	$(CC) tools/crypt.c    -o tools/crypt
@@ -36,8 +40,8 @@ date: tools/makedate
 	tools/makedate > date.c
 
 genclr: genclr.o
-	$(CC) $(LDFLAGS) genclr.o -o genclr
-	$(CPP) $(CFLAGS) -DOMEGA_CLRGEN *.[ch] | ./genclr clrgen.c clrgen.h
+	$(CC) $(CPPFLAGS) $(CFLAGS) $(LDFLAGS) $(LIBS) genclr.o -o genclr
+	$(CPP) $(CPPFLAGS) $(CFLAGS) -DOMEGA_CLRGEN *.[ch] | ./genclr clrgen.c clrgen.h
 
 tools/makedate: tools/makedate.c
 
