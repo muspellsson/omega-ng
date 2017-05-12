@@ -127,7 +127,6 @@ on save and restore. */
  * this doesn't break too many things. */
 /*#define __USE_POSIX2*/
 #define _DEFAULT_SOURCE
-#define _POSIX_C_SOURCE 2
 #define _XOPEN_SOURCE 500
 
 #if defined(MSDOS_SUPPORTED_ANTIQUE)
