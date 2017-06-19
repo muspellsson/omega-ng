@@ -160,7 +160,7 @@ void lock_score_file(void)
 
   FILE * lockfile;
 
-  strcpy(Str1,Omegalib);
+  strcpy(Str1,Omegastate);
   strcat(Str1,"omega.hi.lock");
 
   do
@@ -206,7 +206,7 @@ void lock_score_file(void)
 void unlock_score_file(void)
 {
 #ifndef MSDOS
-    strcpy(Str1,Omegalib);
+    strcpy(Str1,Omegastate);
     strcat(Str1,"omega.hi.lock");
     unlink(Str1);
 #endif
@@ -218,7 +218,7 @@ void showscores(void)
   int i;
 
   lock_score_file();
-  strcpy(Str1,Omegalib);
+  strcpy(Str1,Omegastate);
   strcat(Str1,"omega.hi");
   fd = checkfopen(Str1,"rb");
   filescanstring(fd,Hiscorer);
@@ -302,10 +302,10 @@ void save_hiscore_npc(int npc)
   if (gamestatusp(CHEATED))
       return;
   lock_score_file();
-  strcpy(Str1,Omegalib);
+  strcpy(Str1,Omegastate);
   strcat(Str1,"omega.hi");
   infile = checkfopen(Str1,"rb");
-  strcpy(Str2,Omegalib);
+  strcpy(Str2,Omegastate);
 #ifdef MSDOS
   strcat(Str2,"omegahi.new");	/* stupid 8.3 msdos filename limit */
 #else
@@ -434,7 +434,7 @@ void extendlog(char *descrip, int lifestatus)
     change_to_game_perms();
     npcbehavior=fixnpc(lifestatus);
     checkhigh(descrip,npcbehavior);
-    strcpy(Str1,Omegalib);
+    strcpy(Str1,Omegastate);
     strcat(Str1,"omega.log");
     fd = checkfopen(Str1,"a");
     fprintf(fd, " %d %d %d %s\n", lifestatus, Player.level, npcbehavior,
@@ -494,10 +494,16 @@ int test_file_access(char *file_name, char mode)
 }
 #endif
 
-char *required_file_list[] =
+char *required_lib_file_list[] =
 {
-  "maps.dat", "omega.hi", "omega.log", "motd.txt",
+  "maps.dat", "motd.txt",
   "license.txt", NULL
+};
+
+char *required_state_file_list[] =
+{
+  "omega.hi", "omega.log",
+  NULL
 };
 
 char *optional_file_list[] =
@@ -516,19 +522,30 @@ int filecheck(void)
     int endpos;
     int file;
 
-    strcpy(Str1, Omegalib);
+    strcpy(Str1, Omegastate);
     endpos = strlen(Str1);
-    for (file = 0; required_file_list[file]; file++)
+    for (file = 0; required_state_file_list[file]; file++)
     {
-	strcpy(&(Str1[endpos]), required_file_list[file]);
-	if ((strcmp(required_file_list[file], "omega.hi") == 0 ||
-	    strcmp(required_file_list[file], "omega.log") == 0) &&
+	strcpy(&(Str1[endpos]), required_state_file_list[file]);
+	if ((strcmp(required_state_file_list[file], "omega.hi") == 0 ||
+	    strcmp(required_state_file_list[file], "omega.log") == 0) &&
 	    test_file_access(Str1, 'w') == 0)
 	{
 	    impossible = TRUE;
 	    printf("\nError! File not appendable or accessible: %s", Str1);
 	}
 	else if (test_file_access(Str1, 'r') == 0)
+	{
+	    impossible = TRUE;
+	    printf("\nError! File not accessible: %s", Str1);
+	}
+    }
+    strcpy(Str1, Omegalib);
+    endpos = strlen(Str1);
+    for (file = 0; required_lib_file_list[file]; file++)
+    {
+	strcpy(&(Str1[endpos]), required_lib_file_list[file]);
+	if (test_file_access(Str1, 'r') == 0)
 	{
 	    impossible = TRUE;
 	    printf("\nError! File not accessible: %s", Str1);

@@ -73,6 +73,11 @@ on save and restore. */
 
 #define OMEGALIB "./lib/"
 
+/* OMEGASTATE is where all the volatile data files reside. 
+   Notes as above apply. */
+
+#define OMEGASTATE "./lib/"
+
 /* TILEFILE is the name of the file you want to use for graphics tiles. You */
 /* aren't really free to use any file you want here. It should be the Omega */
 /* distribution graphics files provided for your computer. Of course a file */
@@ -126,6 +131,8 @@ on save and restore. */
  * but my compiler seems to disagree unless this is set.  I hope that
  * this doesn't break too many things. */
 /*#define __USE_POSIX2*/
+#define _DEFAULT_SOURCE
+#define _XOPEN_SOURCE 500
 
 #if defined(MSDOS_SUPPORTED_ANTIQUE)
 #define SAVE_LEVELS

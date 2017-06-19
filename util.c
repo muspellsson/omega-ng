@@ -3,6 +3,8 @@
 
 /* Random utility functions called from all over */
 
+#include "glob.h"
+
 #ifndef MSDOS_SUPPORTED_ANTIQUE
 #include <sys/types.h>
 #include <sys/time.h>
@@ -13,8 +15,6 @@ int setreuid(uid_t ruid, uid_t euid);
 #endif
 #include <stdlib.h>
 #endif
-
-#include "glob.h"
 
 void setPlayerXY(int x, int y)
 {

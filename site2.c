@@ -229,7 +229,7 @@ void pacify_guards(void)
 	Level->site[ml->m->x][ml->m->y].creature = ml->m;
       }
     }
-    if (Current_Environment == E_CITY)
+  if (Current_Environment == E_CITY)
       Level->site[40][60].p_locf = L_ORDER; /* undoes action in alert_guards */
 }
 

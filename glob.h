@@ -26,6 +26,9 @@ extern char SaveFileName[80];
 /* This string holds the path to the library files */
 extern char *Omegalib;
 
+/* This string holds the path to the volatile files */
+extern char *Omegastate;
+
 /* one of each monster */
 extern struct monster Monsters[NUMMONSTERS];
 

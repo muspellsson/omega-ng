@@ -2,10 +2,10 @@
 /* bank.c */
 /* new bank -- moved out of site1.c */
 
+#include "glob.h"
 #include <ctype.h>
 #include <limits.h>
 #include <unistd.h>
-#include "glob.h"
 
 /* swiped from scr.c */
 #if defined(MSDOS_SUPPORTED_ANTIQUE) || defined(AMIGA)
