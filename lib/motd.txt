@@ -11,11 +11,11 @@
 
             omega version 0.91 is copyright (C) 1987,1988,1989 by:
                              Laurence R. Brothers
-                                  copyright (C) 2016 by:
-                             Ivan Sukin
+                                  copyright (C) 2016-2021 by:
+                             Ivan Sukin, Steven Newbury
                        and is licensed under the LGPL.
-             Maintained by: Ivan Sukin (muspellsson@undeadbsd.org).
+             Maintained by: Steven Newbury (steve@snewbury.org.uk).
              Send suggestions and complaints about this prealpha to
-                         Ivan Sukin, or visit
-                     https://github.com/muspellsson/omega-ng.
+                         Steven Newbury, or visit
+                     https://github.com/sjnewbury/omega-ng
 

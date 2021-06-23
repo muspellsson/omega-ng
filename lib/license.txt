@@ -59,3 +59,14 @@ friendlier user interface, more puzzles, or any other topic you'd like to
 see addressed, please write to William.  Every suggestion's fair game; it's
 been too long since Omega's gotten the respect that it deserves.  Feel free
 to check for the latest version at http://lyric.ml.org/~wtanksle/omega/.
+
+====
+Above contact information is historical only
+
+0.91 prealpha was distributed and maintained by muspellsson@undeadbsd.org
+(Ivan Sukin).  Given lack of activity since 2017, I have now taken over
+maintainership. 
+
+Current version Omega, 0.91 prealpha 2, is distributed and maintained by
+steve@snewbury.org.uk (Steven Newbury). Please report issues and/or pull
+requests via https://github.com/sjnewbury/omega-ng
